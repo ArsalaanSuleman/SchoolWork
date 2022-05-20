@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppvarming 2</title>
+</head>
+<body>
+    
+    <!-- Det er lov å endre HTML og id'er -->
+    <h3>Klikk på den du tror har en katt!</h3>
+    <input id="check-person1-img" type="image" src="images/person1.jpg"/>
+    <input id="check-person2-img" type="image" src="images/person2.jpg"/>
+    <div id="output-div"></div>
+
+    <script>
+    // html objects
+        var person1 = document.getElementById("check-person1-img");
+        var person2 = document.getElementById("check-person2-img");
+        var outputDiv = document.getElementById("output-div"); 
+    //  variables 
+        var randomNumber;
+        var cat1 = false;  
+        var cat2 = false;          
+    //  Functions 
+    function generateAsign(){
+        randomNumber = Math.floor(Math.random()* 2 + 1);
+        if(randomNumber < 2){
+            cat1 = true; 
+        }
+        else{
+            cat2 = true;  
+        }
+    }
+    function person1click(){
+        if(cat1 == true){
+            outputDiv.innerHTML =` <img src="images/cat.jpg"/> <br> det stemmer`
+        }
+        else if(cat1 == false){
+            outputDiv.innerHTML =`<img src="images/frog.jpg"/> <br> nei hu har frosk`
+        }  
+    }
+
+    function person2click(){
+        if(cat2 == true){
+            outputDiv.innerHTML = ` <img src="images/cat.jpg"/> <br> det stemmer`
+        }
+        else if(cat2 == false){
+            outputDiv.innerHTML = `<img src="images/frog.jpg"/> <br> nei han har frosk`
+        }  
+    }
+    // function ini
+    function start1(){
+        generateAsign();
+        person1click();
+    }
+    function start2(){
+        generateAsign();
+        person2click();
+    }
+    // Events
+    person1.onclick = start1;
+    person2.onclick = start2;
+    </script>
+
+</body>
+</html>

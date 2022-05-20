@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppvarming 1</title>
+</head>
+<body>
+    
+    <!-- Det er lov å endre HTML og id'er -->
+
+    <input id="add-images-btn" type="button" value="Legg til bilder">
+    <p>Antall bilder: <span id="number-of-images-span">0</span></p>
+    <div id="output-div"></div>
+
+    <script>
+        // HTML objects
+            var addimage = document.getElementById("add-images-btn");
+            var imageCount = document.getElementById("number-of-images-span");
+            var OutputDiv = document.getElementById("output-div");
+
+        // variables  
+            var randomNumber;
+            var imageselect;
+            var imageSelectval; 
+        
+        // Funtions   
+            function wipeGenNum(){
+                OutputDiv.innerHTML = ("");
+                randomNumber = Math.floor(Math.random()* 100);
+            }
+
+            function chooseimage(){
+                if(25 > randomNumber && randomNumber >= 0){
+                    imageSelectValue = ("person1.jpg");
+                    return;
+                    }
+                    else if(50 > randomNumber && randomNumber > 25){
+                    imageSelectValue = ("person2.jpg");
+                    return;
+                    }
+                    else if(75 > randomNumber && randomNumber > 50){
+                    imageSelectValue = ("person3.jpg");
+                    return;
+                    }
+                    else if (100 > randomNumber  && randomNumber > 75){
+                    imageSelectValue = ("person4.jpg");
+                    return;
+                    }
+            }
+        
+               function print(){
+                
+                for(var i = 0; i < randomNumber; i++){
+                OutputDiv.innerHTML += `
+                    <img src="images/${imageSelectValue}"/>
+                    `}
+                imageCount.innerHTML = randomNumber;
+             }
+         // function ini
+               function start(){
+                   wipeGenNum();
+                   chooseimage();
+                   print();
+               }
+           
+        // Events
+            addimage.onclick = start;
+
+
+
+    </script>
+
+</body>
+</html>

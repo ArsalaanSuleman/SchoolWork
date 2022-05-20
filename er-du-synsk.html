@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="denne-mappen-trengs-ikke-roeres/er-du-synsk.css">
+    <title>Er du synsk?</title>
+</head>
+<body>
+    
+    <header>
+        <h1>Er du synsk?</h1>
+    </header>
+
+    <!-- Det er lov å endre HTML og id'er -->
+
+    <section>
+        <button type="button" id="box1">Denne?</button>
+        <button type="button" id="box2">Eller denne?</button>
+        <button type="button" id="restart">Restart</button>
+    </section>
+
+    <div id="number-of-lives-div"></div>
+
+    <div id="number-of-right-answers-div">
+        <p>Antall riktige: 0</p>
+    </div>
+
+    <div id="number-of-wrong-answers-div">
+        <p>Antall feil: 0</p>
+    </div>    
+
+    <div id="output-div">
+        <p>Klikk på en av boksene for å begynne spillet</p>            
+    </div>
+
+    <script>
+// HTML-objekter
+
+        var boxSelect1 = document.getElementById("box1");
+        var boxSelect2 = document.getElementById("box2");
+        var lives = document.getElementById("number-of-lives-div");
+        var rightAnswDiv = document.getElementById("number-of-right-answers-div"); 
+        var wrongAnswDiv = document.getElementById("number-of-wrong-answers-div");
+        var outputDiv = document.getElementById("output-div");
+        var RestartBtn = document.getElementById("restart");
+
+// Variabler 
+
+        var corrAnsw = 0; 
+        var wrongAnsw = 0; 
+        var livesCounter = 0;
+        var lifeSelect = prompt("hvor mange liv vil du ha?");
+
+// loops 
+
+    for(var i = 0; i < lifeSelect; i++){
+            lives.innerHTML += `<img src="images/person1.jpg"/> `;
+            livesCounter ++;
+    }
+
+// Funksjoner
+    function clickBox1() {
+
+        var answer = Math.floor(Math.random()*2+1); 
+        if (answer === 1){
+            corrAnsw++; 
+            rightAnswDiv.innerHTML = ("Antall riktige:") + corrAnsw;
+        }
+        else{
+            wrongAnsw++;
+            lifeSelect--;
+            wrongAnswDiv.innerHTML = ("Antall feil:") + wrongAnsw;
+            lives.removeChild(lives.lastElementChild); 
+        }
+        if(lifeSelect === 0){
+            outputDiv.innerHTML = ("game over");
+        }
+        if(corrAnsw === 3 ||corrAnsw === 5 ||corrAnsw === 7) {
+            lives.innerHTML += `<img src="images/person1.jpg"/> `;
+        }
+        if(corrAnsw === 10){
+                lives.innerHTML =("");
+                boxSelect1=("");
+                boxSelect2=("");
+                lives=("");
+                rightAnswDiv=("");
+                wrongAnswDiv=("");
+                outputDiv.innerHTML = `<img src="images/fireworks.jpg"/>`;
+        }
+    }
+        
+    function clickBox2() {
+
+        var answer = Math.floor(Math.random()*2+1); 
+        if(answer === 2){
+                corrAnsw++; 
+                rightAnswDiv.innerHTML = ("Antall riktige:") + corrAnsw; 
+        }
+        else{
+            wrongAnsw++;
+            lifeSelect--;
+            wrongAnswDiv.innerHTML = ("Antall feil:") + wrongAnsw;
+            lives.removeChild(lives.lastElementChild);
+        }
+        if(lifeSelect === 0){
+            outputDiv.innerHTML = ("game over");
+        }
+        if(corrAnsw === 3 ||corrAnsw === 5 ||corrAnsw === 7) {
+            lives.innerHTML += `<img src="images/person1.jpg"/> `;
+        }
+        if(corrAnsw === 10){
+            lives.innerHTML =("");
+            boxSelect1=("");
+            boxSelect2=("");
+            lives=("");
+            rightAnswDiv=("");
+            wrongAnswDiv=("");
+            outputDiv.innerHTML = `<img src="images/fireworks.jpg"/>`;
+        }
+    }
+
+    function restartF(){
+
+        location.reload();
+        }
+
+// Events
+
+    boxSelect1.onclick = clickBox1; 
+    boxSelect2.onclick = clickBox2; 
+    RestartBtn.onclick = restartF;
+
+    </script> 
+</body>
+</html>

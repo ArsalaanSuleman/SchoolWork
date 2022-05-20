@@ -1,0 +1,23 @@
+body{
+    font-family: sans-serif;
+}
+
+
+section{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+#box1-div, #box2-div{
+    text-align: center;
+    width: 10rem;
+    height: 10rem;
+    margin-right: 1rem;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
